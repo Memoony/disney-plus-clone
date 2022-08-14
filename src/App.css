@@ -1,0 +1,39 @@
+html {
+  scroll-behavior: smooth; /* "Scroll Behavior" özelliği ile ilgili hedefe giderken kaydırma efekti ile animasyonlu olarak gitmesi sağlanır. */
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #040714;
+  color: #f9f9f9;
+
+  font-family: Avenir-Roman, sans-serif;
+  margin: 0; /* Bir HTML elementinin çevresi ile ona komşu başka bir HTML elementi arasında belirtilen miktarda genişletip boşluk yaratır. */
+  padding: 0; /* İçeriğin etrafında boşluk oluşturmak için kullanırız */
+}
+
+a {
+  color: #f9f9f9;
+  text-decoration: none; /* Metin dekorasyonunu kaldırmak için kullanılır. */
+}
+
+@media only screen and (min-width: 768px) {
+  body {
+    font-size: 16px;
+  }
+}
+
+@media only screen and (min-width: 480px) and (max-width: 768px) {
+  body {
+    font-size: 15px;
+  }
+}
+
+@media only screen and (max-width: 479px) {
+  body {
+    font-size: 14px;
+  }
+}
