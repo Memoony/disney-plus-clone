@@ -1,8 +1,14 @@
+[Live Demo](https://disneyplus-clone-22088.web.app/)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
+
+After pulling the repository, you must first run:
+
+### `npm install`
 
 In the project directory, you can run:
 
