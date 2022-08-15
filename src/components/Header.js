@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { auth, provider } from "../firebase";
 import {
     selectUserName,
@@ -15,7 +15,7 @@ const Header = (props) => {
     //* useDispatch, store'un gönderilmesini sağlar. Tüm yaptığı store'un dispatch metodunu dönmek, yani manuel olarak actionlarımızı dispatch edebiliriz.
     //* useSelector, store'dan değişkenleri vs. almamızı sağlar.
     const dispatch = useDispatch();
-    const history = useHistory();
+    const navigate = useNavigate();
     const userName = useSelector(selectUserName);
     const userPhoto = useSelector(selectUserPhoto);
 
@@ -24,7 +24,7 @@ const Header = (props) => {
         auth.onAuthStateChanged(async (user) => {
             if (user) {
                 setUser(user);
-                history.push("/home");
+                navigate("/home");
             }
         });
     }, [userName]);
@@ -39,7 +39,7 @@ const Header = (props) => {
         } else if (userName) {
             auth.signOut().then(() => {
                 dispatch(setSignOutState());
-                history.push("/");
+                navigate("/");
             }).catch((error) => {
                 alert(error.message);
             });
@@ -59,7 +59,7 @@ const Header = (props) => {
     return (
         <Nav>
             <Logo>
-                <a href="/home">
+                <a href={userName ? "/home" : "/"}>
                     <img src='/images/logo.svg' alt="Disney+" />
                 </a>
             </Logo>
@@ -69,7 +69,7 @@ const Header = (props) => {
             ) : (
                 <>
                     <NavMenu>
-                        <a href="/home">
+                        <a href={userName ? "/home" : "/"}>
                             <img src="/images/home-icon.svg" alt="HOME" />
                             <span>HOME</span>
                         </a>
@@ -121,7 +121,7 @@ const Nav = styled.nav`
     z-index: 3;
 `;
 
-const Logo = styled.a`
+const Logo = styled.div`
     padding: 0;
     width: 80px;
     margin-top: 4px;
